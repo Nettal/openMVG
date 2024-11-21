@@ -41,7 +41,7 @@ void GuidedMatching(
   //  the smallest distance (smaller than the provided Threshold)
 
   #pragma omp parallel for
-  for (size_t i = 0; i < xLeft.cols(); ++i) {
+  for (int i = 0; i < xLeft.cols(); ++i) {
 
     double min = std::numeric_limits<double>::max();
     matching::IndMatch match;
@@ -140,7 +140,7 @@ void GuidedMatching(
   //   1. a geometric distance below the provided Threshold
   //   2. a distance ratio between descriptors of valid geometric correspondencess
   #pragma omp parallel for
-  for (size_t i = 0; i < xLeft.cols(); ++i) {
+  for (int i = 0; i < xLeft.cols(); ++i) {
     MetricT metric;
 
     distanceRatio<typename MetricT::ResultType > dR;
@@ -202,7 +202,7 @@ void GuidedMatching(
   }
 
   #pragma omp parallel for
-  for (size_t i = 0; i < lRegions.RegionCount(); ++i) {
+  for (int i = 0; i < lRegions.RegionCount(); ++i) {
 
     distanceRatio<double> dR;
     for (size_t j = 0; j < rRegions.RegionCount(); ++j) {
